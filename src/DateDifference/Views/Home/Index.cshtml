@@ -1,0 +1,31 @@
+﻿@model DateDifference.Models.DatesViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (Model?.Result != null)
+{
+    <div class="jumbotron">
+        <h1>The difference is @Model.Result</h1>
+    </div>
+
+}
+
+<div class="row">
+    <div class="col-md-offset-4 col-md-4">
+        @using (Html.BeginForm("IndexResult", "Home", FormMethod.Post))
+        {
+            <div class="form-group">
+                @Html.LabelFor(x => x.DateOne)
+                @Html.TextBoxFor(x => x.DateOne, null, new { type = "date", required = true, @class = "form-control" })
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(x => x.DateTwo)
+                @Html.TextBoxFor(x => x.DateTwo, null, new { type = "date", required = true, @class = "form-control" })
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        }
+    </div>
+</div>
